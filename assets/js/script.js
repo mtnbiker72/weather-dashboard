@@ -52,7 +52,7 @@ function timeConverter(unixtime) {
 }
 
 function getWeatherData(city) {
-    document.getElementById('city').innerHTML = city.name + " " + currentDate + " " + 
+    document.getElementById('city').innerHTML = city.name + " (" + currentDate + ") " + 
     "<img src='http://openweathermap.org/img/w/" + city.weather[0].icon + ".png'></img>"; 
     document.getElementById('temp').innerHTML = "Temp: " + tempConverter(city.main.temp);
     document.getElementById('wind').innerHTML = "Wind Speed: " + city.wind.speed + " MPH";
@@ -68,11 +68,11 @@ function getWeatherData(city) {
         .then(function (forecastData) {
             // Get the UV index
             uvIndex = forecastData.daily[0].uvi;
-            if (uvIndex < 4) {
+            if (uvIndex < 3) {
                 document.getElementById('uv-index').style.backgroundColor = "green"
                 document.getElementById('uv-index').innerHTML = "UV Index: " + uvIndex;
             }
-            else if (uvIndex > 3 || uvIndex < 7) {
+            else if (uvIndex > 2 || uvIndex < 6) {
             document.getElementById('uv-index').style.backgroundColor = "orange"
             document.getElementById('uv-index').innerHTML = "UV Index: " + uvIndex;
             }
@@ -85,28 +85,28 @@ function getWeatherData(city) {
             document.querySelector('.day1').innerHTML = "<div>" + timeConverter(forecastData.daily[1].dt) + "</div>"  +
             "<div> <img src='http://openweathermap.org/img/w/" + forecastData.daily[1].weather[0].icon + ".png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[1].temp.day) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[0].wind_speed + "MPH" +"</div>" +
+            "<div>Wind: " + forecastData.daily[0].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[0].humidity + "%" +"</div>"
 
             document.querySelector('.day2').innerHTML = "<div>" + timeConverter(forecastData.daily[2].dt) + "</div>"  +
             "<div> <img src='http://openweathermap.org/img/w/" + forecastData.daily[2].weather[0].icon + ".png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[2].temp.day) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[1].wind_speed + "MPH" +"</div>" +
+            "<div>Wind: " + forecastData.daily[1].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[1].humidity + "%" +"</div>" 
             document.querySelector('.day3').innerHTML = "<div>" + timeConverter(forecastData.daily[3].dt) + "</div>"  +
             "<div> <img src='http://openweathermap.org/img/w/" + forecastData.daily[3].weather[0].icon + ".png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[3].temp.day) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[2].wind_speed + "MPH" +"</div>" +
+            "<div>Wind: " + forecastData.daily[2].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[2].humidity + "%" +"</div>" 
             document.querySelector('.day4').innerHTML = "<div>" + timeConverter(forecastData.daily[4].dt) + "</div>"  +
             "<div> <img src='http://openweathermap.org/img/w/" + forecastData.daily[4].weather[0].icon + ".png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[4].temp.day) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[3].wind_speed + "MPH" +"</div>" +
+            "<div>Wind: " + forecastData.daily[3].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[3].humidity + "%" +"</div>" 
             document.querySelector('.day5').innerHTML = "<div>" + timeConverter(forecastData.daily[5].dt) + "</div>"  +
             "<div> <img src='http://openweathermap.org/img/w/" + forecastData.daily[5].weather[0].icon + ".png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[5].temp.day) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[4].wind_speed + "MPH" +"</div>" +
+            "<div>Wind: " + forecastData.daily[4].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[4].humidity + "%" +"</div>" 
         })
 }

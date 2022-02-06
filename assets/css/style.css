@@ -10,14 +10,32 @@ h1 {
     padding: 10px;
 }
 
-.city-search {
+.city-name {
     font-weight: bold;
     font-size: 20px;
+    padding: 10px;
+}
+
+hr.solid {
+    border-top: 3px solid darkgrey;
+    padding: 10px;
+  }
+
+.five-day-forecast {
+    padding-top: 20px;
+}
+
+#submit-button {
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px;
 }
 
 #city {
+    padding-top: 15px;
+    padding-bottom: 0;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 36px;
 }
 
 .city-list {
@@ -36,4 +54,11 @@ h1 {
     padding: 10px;
     border: 2px solid black;
     margin: 10px;
+    font-size: 24px;
+}
+
+.favorite-cities {
+    background-color: grey;
+    padding: 5px;
+    text-align: center;
 }
