@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+
+    <div class="weather-heading">
+        <h1>Weather Dashboard</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 bg-light">
+                <div class="card-header">
+                    <h3>Search for a City:</h3>
+                </div>
+                <input id="city-name" type="text" class="form-control" placeholder="Enter City" />
+                <button type="button" class="btn btn-primary btn-block" id="submit-button">Search</button>
+                <div class="favorite-cities"></div>
+            </div>
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 id="city">City</h3>
+                        <img id="weather-icon">
+                        <p id="temp">Temp</p>
+                        <p id="wind">Wind Speed</p>
+                        <p id="humidity">Humidity</p>
+                        <p id="uv-index">UV Index</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>5 Day Forecast</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 forecast day1 text-white m-2 rounded">Day 1</div>
+                    <div class="col-lg-2 forecast day2 text-white m-2 rounded">Day 2</div>
+                    <div class="col-lg-2 forecast day3 text-white m-2 rounded">Day 3</div>
+                    <div class="col-lg-2 forecast day4 text-white m-2 rounded">Day 4</div>
+                    <div class="col-lg-2 forecast day5 text-white m-2 rounded">Day 5</div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    </div>
+    </section>
+
+
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="./assets/js/script.js"></script>
+
+</html>

@@ -1,0 +1,39 @@
+h1 {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.weather-heading {
+    background-color: darkblue;
+    margin: 0;
+    padding: 10px;
+}
+
+.city-search {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#city {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.city-list {
+    border-radius: 10px;
+    background-color: darkgrey;
+    color: black;
+}
+
+.forecast {
+    background-color: rgb(8, 0, 95);
+    line-height: 3.0;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 10px;
+    border: 2px solid black;
+    margin: 10px;
+}
