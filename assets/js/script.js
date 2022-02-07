@@ -50,7 +50,7 @@ function getWeatherForCity(cityName) {
 // To get extended forecast, get lat and long parameters to use for next API call
 function getWeatherData(city) {
     document.getElementById('city').innerHTML = city.name + " (" + currentDate + ") " + 
-    "<img class='weather-icon' src='http://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x.png'></img>"; 
+    "<img class='weather-icon' src='https://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x.png'></img>"; 
     document.getElementById('temp').innerHTML = "Temp: " + tempConverter(city.main.temp) + String.fromCharCode(176);
     document.getElementById('wind').innerHTML = "Wind Speed: " + city.wind.speed + " MPH";
     document.getElementById('humidity').innerHTML = "Humidity: " + city.main.humidity + "%";
@@ -83,27 +83,27 @@ function getWeatherData(city) {
             // Convert the temp from kelvin to Farenheit and display for each day
             // Use image from openweathermap.org to populate the page (make image a little larger, too)
             document.querySelector('.day1').innerHTML = "<div>" + timeConverter(forecastData.daily[1].dt) + "</div>"  +
-            "<div> <img src='http://openweathermap.org/img/wn/" + forecastData.daily[1].weather[0].icon + "@2x.png'> </div>" +
+            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[1].weather[0].icon + "@2x.png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[1].temp.day) + String.fromCharCode(176) + "</div>" + 
             "<div>Wind: " + forecastData.daily[0].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[0].humidity + "%" +"</div>"
             document.querySelector('.day2').innerHTML = "<div>" + timeConverter(forecastData.daily[2].dt) + "</div>"  +
-            "<div> <img src='http://openweathermap.org/img/wn/" + forecastData.daily[2].weather[0].icon + "@2x.png'> </div>" +
+            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[2].weather[0].icon + "@2x.png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[2].temp.day) + String.fromCharCode(176) + "</div>" + 
             "<div>Wind: " + forecastData.daily[1].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[1].humidity + "%" +"</div>" 
             document.querySelector('.day3').innerHTML = "<div>" + timeConverter(forecastData.daily[3].dt) + "</div>"  +
-            "<div> <img src='http://openweathermap.org/img/wn/" + forecastData.daily[3].weather[0].icon + "@2x.png'> </div>" +
+            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[3].weather[0].icon + "@2x.png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[3].temp.day) + String.fromCharCode(176) + "</div>" + 
             "<div>Wind: " + forecastData.daily[2].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[2].humidity + "%" +"</div>" 
             document.querySelector('.day4').innerHTML = "<div>" + timeConverter(forecastData.daily[4].dt) + "</div>"  +
-            "<div> <img src='http://openweathermap.org/img/wn/" + forecastData.daily[4].weather[0].icon + "@2x.png'> </div>" +
+            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[4].weather[0].icon + "@2x.png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[4].temp.day) + String.fromCharCode(176) + "</div>" + 
             "<div>Wind: " + forecastData.daily[3].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[3].humidity + "%" +"</div>" 
             document.querySelector('.day5').innerHTML = "<div>" + timeConverter(forecastData.daily[5].dt) + "</div>"  +
-            "<div> <img src='http://openweathermap.org/img/wn/" + forecastData.daily[5].weather[0].icon + "@2x.png'> </div>" +
+            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[5].weather[0].icon + "@2x.png'> </div>" +
             "<div>Temp: " + tempConverter(forecastData.daily[5].temp.day) + String.fromCharCode(176) + "</div>" + 
             "<div>Wind: " + forecastData.daily[4].wind_speed + " MPH" +"</div>" +
             "<div>Humidity: " + forecastData.daily[4].humidity + "%" +"</div>" 
