@@ -1,3 +1,4 @@
+// Set high level variables
 const apiKey = "520bf727e3c3660e6c51121d185dd541";
 const submitButton = document.querySelector("#submit-button");
 const cityNameEl = document.querySelector("#city-name");
@@ -5,6 +6,7 @@ var favoriteCities = JSON.parse(localStorage.getItem("favoriteCities"));
 var cityName = '';
 const favoriteCitiesEl = document.querySelector(".favorite-cities");
 
+// Determine if favoriteCities is empty or not
 if (!favoriteCities ) {
     favoriteCities = [];
   }
@@ -16,14 +18,13 @@ showCities(favoriteCities);
 var currentDate = moment().format("M/D/YY");
 $("#date").text(currentDate);
 
-
 function getWeather() {
     cityName = cityNameEl.value;
     getWeatherForCity(cityName);
 }
 
 // Send the API request and verify the response is 200
-// If not, alert an error and allow them to try again
+// If not, alert the user and allow them to try again
 function getWeatherForCity(cityName) {
     showCities(favoriteCities);
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + apiKey)
@@ -45,6 +46,8 @@ function getWeatherForCity(cityName) {
     }
 }
 
+// Parse the output of the API response and get out weather details
+// To get extended forecast, get lat and long parameters to use for next API call
 function getWeatherData(city) {
     document.getElementById('city').innerHTML = city.name + " (" + currentDate + ") " + 
     "<img class='weather-icon' src='http://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x.png'></img>"; 
