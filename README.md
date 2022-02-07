@@ -1,5 +1,7 @@
 Homework #6 Weather Dashboard
 
+The app can be found here - https://mtnbiker72.github.io/weather-dashboard/
+
 Build a weather dashboard that allows a user to input a city name and get various weather data.  These include:
   * User is presented with city name, current date, an icon representation of weather conditions, them temp, the humidity,
   the wind speed and UV index for today's weather
