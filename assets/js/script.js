@@ -7,9 +7,9 @@ var cityName = '';
 const favoriteCitiesEl = document.querySelector(".favorite-cities");
 
 // Determine if favoriteCities is empty or not
-if (!favoriteCities ) {
+if (!favoriteCities) {
     favoriteCities = [];
-  }
+}
 
 // Display cities from local storage
 showCities(favoriteCities);
@@ -31,26 +31,28 @@ function getWeatherForCity(cityName) {
         .then(function (response) {
             if (response.status !== 200) {
                 alert("Invalid City");
-                return 
+                return
             }
             else return response.json()
-        }) 
+        })
         .then(function (weatherData) {
-           getWeatherData(weatherData);
+            if (weatherData) {
+                getWeatherData(weatherData);
+                if (favoriteCities.indexOf(cityName) === -1) {
+                    favoriteCities.push(cityName);
+                    localStorage.setItem('favoriteCities', JSON.stringify(favoriteCities));
+                    showCities(favoriteCities);
+                }
+            }
         })
     // Store city in local storage, but check to make sure it's not there already
-    if (favoriteCities.indexOf(cityName) === -1)  {
-        favoriteCities.push(cityName);
-        localStorage.setItem('favoriteCities', JSON.stringify(favoriteCities));
-        showCities(favoriteCities);
-    }
 }
 
 // Parse the output of the API response and get out weather details
 // To get extended forecast, get lat and long parameters to use for next API call
 function getWeatherData(city) {
-    document.getElementById('city').innerHTML = city.name + " (" + currentDate + ") " + 
-    "<img class='weather-icon' src='https://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x.png'></img>"; 
+    document.getElementById('city').innerHTML = city.name + " (" + currentDate + ") " +
+        "<img class='weather-icon' src='https://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x.png'></img>";
     document.getElementById('temp').innerHTML = "Temp: " + tempConverter(city.main.temp) + String.fromCharCode(176);
     document.getElementById('wind').innerHTML = "Wind Speed: " + city.wind.speed + " MPH";
     document.getElementById('humidity').innerHTML = "Humidity: " + city.main.humidity + "%";
@@ -60,8 +62,8 @@ function getWeatherData(city) {
     // Get extended forcast and UV Index
     fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + long + '&exclude=current,hourly,minutely&appid=' + apiKey)
         .then(function (response) {
-          return response.json()
-          })
+            return response.json()
+        })
         .then(function (forecastData) {
             // Get the UV index and change the background color based on the value
             uvIndex = forecastData.daily[0].uvi;
@@ -70,8 +72,8 @@ function getWeatherData(city) {
                 document.getElementById('uv-index').innerHTML = "UV Index: " + uvIndex;
             }
             else if (uvIndex > 2 || uvIndex < 6) {
-            document.getElementById('uv-index').style.backgroundColor = "orange"
-            document.getElementById('uv-index').innerHTML = "UV Index: " + uvIndex;
+                document.getElementById('uv-index').style.backgroundColor = "orange"
+                document.getElementById('uv-index').innerHTML = "UV Index: " + uvIndex;
             }
             else {
                 document.getElementById('uv-index').style.backgroundColor = "red"
@@ -82,31 +84,31 @@ function getWeatherData(city) {
             // Convert the time from unix time to a readable date format
             // Convert the temp from kelvin to Farenheit and display for each day
             // Use image from openweathermap.org to populate the page (make image a little larger, too)
-            document.querySelector('.day1').innerHTML = "<div>" + timeConverter(forecastData.daily[1].dt) + "</div>"  +
-            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[1].weather[0].icon + "@2x.png'> </div>" +
-            "<div>Temp: " + tempConverter(forecastData.daily[1].temp.day) + String.fromCharCode(176) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[0].wind_speed + " MPH" +"</div>" +
-            "<div>Humidity: " + forecastData.daily[0].humidity + "%" +"</div>"
-            document.querySelector('.day2').innerHTML = "<div>" + timeConverter(forecastData.daily[2].dt) + "</div>"  +
-            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[2].weather[0].icon + "@2x.png'> </div>" +
-            "<div>Temp: " + tempConverter(forecastData.daily[2].temp.day) + String.fromCharCode(176) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[1].wind_speed + " MPH" +"</div>" +
-            "<div>Humidity: " + forecastData.daily[1].humidity + "%" +"</div>" 
-            document.querySelector('.day3').innerHTML = "<div>" + timeConverter(forecastData.daily[3].dt) + "</div>"  +
-            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[3].weather[0].icon + "@2x.png'> </div>" +
-            "<div>Temp: " + tempConverter(forecastData.daily[3].temp.day) + String.fromCharCode(176) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[2].wind_speed + " MPH" +"</div>" +
-            "<div>Humidity: " + forecastData.daily[2].humidity + "%" +"</div>" 
-            document.querySelector('.day4').innerHTML = "<div>" + timeConverter(forecastData.daily[4].dt) + "</div>"  +
-            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[4].weather[0].icon + "@2x.png'> </div>" +
-            "<div>Temp: " + tempConverter(forecastData.daily[4].temp.day) + String.fromCharCode(176) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[3].wind_speed + " MPH" +"</div>" +
-            "<div>Humidity: " + forecastData.daily[3].humidity + "%" +"</div>" 
-            document.querySelector('.day5').innerHTML = "<div>" + timeConverter(forecastData.daily[5].dt) + "</div>"  +
-            "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[5].weather[0].icon + "@2x.png'> </div>" +
-            "<div>Temp: " + tempConverter(forecastData.daily[5].temp.day) + String.fromCharCode(176) + "</div>" + 
-            "<div>Wind: " + forecastData.daily[4].wind_speed + " MPH" +"</div>" +
-            "<div>Humidity: " + forecastData.daily[4].humidity + "%" +"</div>" 
+            document.querySelector('.day1').innerHTML = "<div>" + timeConverter(forecastData.daily[1].dt) + "</div>" +
+                "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[1].weather[0].icon + "@2x.png'> </div>" +
+                "<div>Temp: " + tempConverter(forecastData.daily[1].temp.day) + String.fromCharCode(176) + "</div>" +
+                "<div>Wind: " + forecastData.daily[0].wind_speed + " MPH" + "</div>" +
+                "<div>Humidity: " + forecastData.daily[0].humidity + "%" + "</div>"
+            document.querySelector('.day2').innerHTML = "<div>" + timeConverter(forecastData.daily[2].dt) + "</div>" +
+                "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[2].weather[0].icon + "@2x.png'> </div>" +
+                "<div>Temp: " + tempConverter(forecastData.daily[2].temp.day) + String.fromCharCode(176) + "</div>" +
+                "<div>Wind: " + forecastData.daily[1].wind_speed + " MPH" + "</div>" +
+                "<div>Humidity: " + forecastData.daily[1].humidity + "%" + "</div>"
+            document.querySelector('.day3').innerHTML = "<div>" + timeConverter(forecastData.daily[3].dt) + "</div>" +
+                "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[3].weather[0].icon + "@2x.png'> </div>" +
+                "<div>Temp: " + tempConverter(forecastData.daily[3].temp.day) + String.fromCharCode(176) + "</div>" +
+                "<div>Wind: " + forecastData.daily[2].wind_speed + " MPH" + "</div>" +
+                "<div>Humidity: " + forecastData.daily[2].humidity + "%" + "</div>"
+            document.querySelector('.day4').innerHTML = "<div>" + timeConverter(forecastData.daily[4].dt) + "</div>" +
+                "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[4].weather[0].icon + "@2x.png'> </div>" +
+                "<div>Temp: " + tempConverter(forecastData.daily[4].temp.day) + String.fromCharCode(176) + "</div>" +
+                "<div>Wind: " + forecastData.daily[3].wind_speed + " MPH" + "</div>" +
+                "<div>Humidity: " + forecastData.daily[3].humidity + "%" + "</div>"
+            document.querySelector('.day5').innerHTML = "<div>" + timeConverter(forecastData.daily[5].dt) + "</div>" +
+                "<div> <img src='https://openweathermap.org/img/wn/" + forecastData.daily[5].weather[0].icon + "@2x.png'> </div>" +
+                "<div>Temp: " + tempConverter(forecastData.daily[5].temp.day) + String.fromCharCode(176) + "</div>" +
+                "<div>Wind: " + forecastData.daily[4].wind_speed + " MPH" + "</div>" +
+                "<div>Humidity: " + forecastData.daily[4].humidity + "%" + "</div>"
         })
 }
 
@@ -117,7 +119,7 @@ submitButton.addEventListener("click", getWeather);
 function showCities(favoriteCities) {
     var citiesHTML = "";
     for (var i = 0; i < favoriteCities.length; i++) {
-        citiesHTML+= `<div class="favorite-city-button" onClick="getWeatherForCity('${favoriteCities[i]}')">${favoriteCities[i]}</div>`
+        citiesHTML += `<div class="favorite-city-button" onClick="getWeatherForCity('${favoriteCities[i]}')">${favoriteCities[i]}</div>`
     }
     favoriteCitiesEl.innerHTML = citiesHTML;
 }
@@ -136,3 +138,13 @@ function timeConverter(unixtime) {
     };
     return (new Date(unixtime * 1000).toLocaleString("en-us", format))
 }
+
+// Clear button to clear cities out of local storage
+const clearButton = document.querySelector("#clear-button");
+$(".clear-button").click(function (event) {
+    event.preventDefault;
+    localStorage.clear();
+    // showCities(favoriteCities)
+    $(".favorite-cities").empty();
+    favoriteCities = [];
+})

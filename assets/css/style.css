@@ -92,3 +92,12 @@ hr.solid {
     background-color: gainsboro;
     font-size: 24px;
 }
+
+.clear-button {
+    border-radius: 5px; 
+    margin-top: 10px;
+    position: absolute;
+    /* top: 50%; */
+    left: 30%;
+    border: 3px solid green;
+}
