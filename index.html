@@ -23,31 +23,33 @@
                 <div class="card-header">
                     <h3>Search for a City:</h3>
                 </div>
-                <input id="city-name" type="text" class="form-control" placeholder="Enter City" />
-                <button type="button" class="btn btn-primary btn-block" id="submit-button">Search</button>
+                <div class="m-2">
+                    <input type="text" class="from-control form-control-lg input-large" id="city-name" placeholder="Enter City" />
+                </div>
+                    <button type="button" class="btn btn-primary btn-block" id="submit-button">Search</button>
+                <div> </div>
                 <hr class="solid">
                 <div class="favorite-cities"></div>
             </div>
             <div class="col-lg-9">
                 <div class="card">
                     <div class="card-body">
-                        <h3 id="city">City</h3>
-                        <img id="weather-icon">
+                        <div id="city">City</div>
                         <p id="temp">Temp</p>
                         <p id="wind">Wind Speed</p>
                         <p id="humidity">Humidity</p>
-                        <span id="uv-index">UV Index></span>
+                        <span id="uv-index">UV Index</span>
                     </div>
                 </div>
                 <div class="five-day-forecast">
                     <h3>5 Day Forecast:</h3>
                 </div>
-                <div class="row">
-                    <div class="col-lg-2 forecast day1 text-white m-2 rounded">Day 1</div>
-                    <div class="col-lg-2 forecast day2 text-white m-2 rounded">Day 2</div>
-                    <div class="col-lg-2 forecast day3 text-white m-2 rounded">Day 3</div>
-                    <div class="col-lg-2 forecast day4 text-white m-2 rounded">Day 4</div>
-                    <div class="col-lg-2 forecast day5 text-white m-2 rounded">Day 5</div>
+                <div class="row weather-grid">
+                    <div class="col forecast day1 text-white m-2 rounded">Day 1</div>
+                    <div class="col forecast day2 text-white m-2 rounded">Day 2</div>
+                    <div class="col forecast day3 text-white m-2 rounded">Day 3</div>
+                    <div class="col forecast day4 text-white m-2 rounded">Day 4</div>
+                    <div class="col forecast day5 text-white m-2 rounded">Day 5</div>
                 </div>
             </div>
         </div>

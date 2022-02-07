@@ -1,7 +1,17 @@
+body {
+    cursor: grab;
+}
 h1 {
     text-align: center;
     color: white;
     font-weight: bold;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 40px;
+    text-align: left;
+    cursor: pointer;
 }
 
 .weather-heading {
@@ -10,10 +20,19 @@ h1 {
     padding: 10px;
 }
 
-.city-name {
+.weather-icon {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+#city-name {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     padding: 10px;
+    height: 50px;
+    width: 350px;
+    border-radius: 10px;
 }
 
 hr.solid {
@@ -32,10 +51,11 @@ hr.solid {
 }
 
 #city {
-    padding-top: 15px;
+    padding-top: 0;
     padding-bottom: 0;
     font-weight: bold;
     font-size: 36px;
+    margin: 0;
 }
 
 .city-list {
@@ -50,15 +70,25 @@ hr.solid {
     font-weight: bold;
 }
 
+.weather-grid {
+    margin-left: 0;
+    margin-right: 0px;
+}
+
 .card-body {
-    padding: 10px;
     border: 2px solid black;
-    margin: 10px;
     font-size: 24px;
 }
 
 .favorite-cities {
-    background-color: grey;
+    display: grid;
+    grid-row-gap: 10px;
     padding: 5px;
     text-align: center;
+}
+
+.favorite-city-button {
+    border-radius: 5px;
+    background-color: gainsboro;
+    font-size: 24px;
 }
